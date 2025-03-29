@@ -6,8 +6,5 @@ export const routes: Routes = [
   {
     path: '',
     component: ChartsComponent,
-    data: {
-      title: 'Charts'
-    }
   }
 ];
