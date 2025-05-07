@@ -1,0 +1,44 @@
+<c-card class="border border-primary">
+  <c-card-header class="border-top border-top-primary border-3">
+    <h2>Listado de Usuarios</h2>
+  </c-card-header>
+  <c-card-body>
+    <table cTable hover striped>
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Email</th>
+        <th scope="col">Activo</th>
+        <th scope="col">Created At</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>&#64;mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>&#64;fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colSpan="2">Larry the Bird</td>
+        <td>&#64;twitter</td>
+      </tr>
+      </tbody>
+    </table>
+  </c-card-body>
+  <c-card-footer>
+    <button cButton color="primary" variant="ghost" (click)="openModal()">Registrar</button>
+    <button cButton color="info" variant="ghost" (click)="openModal()">Editar</button>
+    <button cButton color="danger" variant="ghost" (click)="openModal()">Eliminar</button>
+  </c-card-footer>
+</c-card>
+
+
