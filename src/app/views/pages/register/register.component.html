@@ -4,55 +4,47 @@
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form cForm>
+            <form cForm (ngSubmit)="register()">
               <h1>Registrate</h1>
               <p class="text-body-secondary">Crea tu cuenta</p>
+
+              <!-- Nombre de usuario -->
               <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilUser"></svg>
-                </span>
-                <input autoComplete="name" cFormControl placeholder="Nombre" />
+                <span cInputGroupText><svg cIcon name="cilUser"></svg></span>
+                <input [(ngModel)]="user.username" name="username" cFormControl required placeholder="Nombre de usuario" />
               </c-input-group>
+
+              <!-- Nombre completo -->
               <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilUser"></svg>
-                </span>
-                <input autoComplete="name" cFormControl placeholder="Apellido" />
+                <span cInputGroupText><svg cIcon name="cilUser"></svg></span>
+                <input [(ngModel)]="user.full_name" name="full_name" cFormControl required placeholder="Nombre completo" />
               </c-input-group>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilCalendar"></svg>
-                </span>
-                <input autoComplete="name" type="number" cFormControl placeholder="Fecha de nacimiento" />
-              </c-input-group>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilUser"></svg>
-                </span>
-                <input autoComplete="sex" cFormControl placeholder="Sexo" />
-              </c-input-group>
+
+              <!-- Email -->
               <c-input-group class="mb-3">
                 <span cInputGroupText>&#64;</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
+                <input [(ngModel)]="user.email" name="email" cFormControl required placeholder="Correo electrónico" type="email" />
               </c-input-group>
+
+              <!-- Contraseña -->
               <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Contraseña" type="password" />
+                <span cInputGroupText><svg cIcon name="cilLockLocked"></svg></span>
+                <input [(ngModel)]="user.password" name="password" cFormControl required placeholder="Contraseña" type="password" />
               </c-input-group>
-              <c-input-group class="mb-4">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Confirmar contraseña" type="password" />
-              </c-input-group>
+
+              <!-- Confirmación (opcional, solo en frontend) -->
+<!--              <c-input-group class="mb-4">-->
+<!--                <span cInputGroupText><svg cIcon name="cilLockLocked"></svg></span>-->
+<!--                <input [(ngModel)]="confirmPassword" name="confirmPassword" cFormControl required placeholder="Confirmar contraseña" type="password" />-->
+<!--              </c-input-group>-->
+
               <div class="d-grid">
-                <hr>
-                <button cButton color="success">Crear Cuenta</button>
-                <p>Ya tienes una cuenta, Inicia Sesión <a href="/login">Aqui</a></p>
+                <hr />
+                <button cButton color="success" type="submit">Crear Cuenta</button>
+                <p>¿Ya tienes una cuenta? Inicia sesión <a routerLink="/login">aquí</a></p>
               </div>
             </form>
+
           </c-card-body>
         </c-card>
       </c-col>

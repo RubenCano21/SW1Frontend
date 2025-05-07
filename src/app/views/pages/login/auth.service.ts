@@ -26,6 +26,38 @@ export class AuthService {
     );
   }
 
+  logout(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post(`${this.apiUrl}/logout`, {}, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error al cerrar sesión', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  register(user: {username: string;
+                  email: string;
+                  full_name: string;
+                  password: string; }): Observable<any> {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    const body = JSON.stringify(user);
+
+    return this.http.post(`${this.apiUrl}/register`, body, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error en el registro', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
 
   saveToken(token: string): void {
     localStorage.setItem('token', token);
