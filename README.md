@@ -254,3 +254,10 @@ Code released under [the MIT license](https://github.com/coreui/coreui-free-reac
 There is only one limitation you can't re-distribute the CoreUI as stock. You can’t do this if you modify the CoreUI. In the past, we faced some problems with
 persons who tried to sell CoreUI based templates.
 # SW1Frontend
+
+## Librerias auxiliares
+
+### Iconos de Core UI
+
+`bash npm install @coreui/icons@3 @coreui/icons-angular@5.4`
+

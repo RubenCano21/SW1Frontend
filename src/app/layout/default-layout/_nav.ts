@@ -22,8 +22,12 @@ export const navItems: INavData[] = [
   {
     name: 'Typography',
     url: '/theme/typography',
-    linkProps: { fragment: 'headings' },
     iconComponent: { name: 'cil-pencil' }
+  },
+  {
+    name: 'Usuarios',
+    url: '/user/list-user',
+    iconComponent: { name: 'cilUser' }
   },
   {
     name: 'Components',
@@ -181,7 +185,7 @@ export const navItems: INavData[] = [
     ]
   },
   {
-    name: 'Charts',
+    name: 'Resultados',
     iconComponent: { name: 'cil-chart-pie' },
     url: '/charts'
   },
