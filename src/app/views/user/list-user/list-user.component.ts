@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   ButtonDirective,
   CardBodyComponent,
@@ -7,6 +7,9 @@ import {
   CardHeaderComponent,
   TableDirective
 } from "@coreui/angular";
+import {User} from "../model/user.model";
+import {UserService} from "../service/user.service";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-user',
@@ -16,11 +19,33 @@ import {
     CardHeaderComponent,
     CardBodyComponent,
     CardFooterComponent,
-    ButtonDirective
+    ButtonDirective,
+    NgForOf
   ],
   templateUrl: './list-user.component.html',
 })
-export class ListUserComponent {
+export class ListUserComponent implements OnInit{
+
+   users: User[] = [];
+
+  constructor(private userService: UserService) {
+  }
+
+  ngOnInit(): void {
+    this.listUsers();
+  }
+
+  listUsers() {
+    this.userService.getUsers().subscribe({
+      next: (data) => {
+        this.users = Array.isArray(data) ? data : [data];
+      },
+      error: (error) => {
+        console.error('Error fetching users', error);
+      }
+    })
+  }
+
 
   openModal() {
 

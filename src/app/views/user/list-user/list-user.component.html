@@ -9,27 +9,18 @@
         <th scope="col">#</th>
         <th scope="col">Usuario</th>
         <th scope="col">Email</th>
+        <th scope="col">Nombre Completo</th>
         <th scope="col">Activo</th>
-        <th scope="col">Created At</th>
+        <th scope="col">Es Admin</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>&#64;mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>&#64;fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colSpan="2">Larry the Bird</td>
-        <td>&#64;twitter</td>
+      <tr *ngFor="let user of users let i = index">
+        <th>{{ user.username}}</th>
+        <td>{{ user.email}}</td>
+        <td>{{ user.full_name}}</td>
+        <td>{{ user.is_active}}</td>
+        <td>{{ user.is_admin}}</td>
       </tr>
       </tbody>
     </table>
