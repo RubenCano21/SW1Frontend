@@ -16,6 +16,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let user of users let i = index">
+        <th scope="row">{{ i + 1}}</th>
         <th>{{ user.username}}</th>
         <td>{{ user.email}}</td>
         <td>{{ user.full_name}}</td>

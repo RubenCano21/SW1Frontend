@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {User} from "../model/user.model";
+import {User, UserListResponse} from "../model/user.model";
+import {environment} from "../../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:8000/api/users';
+  //'http://localhost:8000/api/users';
+  private apiUrl = environment.apiUrl + '/api';
 
   constructor(private http: HttpClient) { }
 
-  getUsers() : Observable<User> {
-    return this.http.get<User>(this.apiUrl);
+  getUsers() : Observable<UserListResponse> {
+    return this.http.get<UserListResponse>(`${this.apiUrl}/users`);
   }
 
 }
