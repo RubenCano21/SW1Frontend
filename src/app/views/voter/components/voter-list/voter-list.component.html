@@ -1,0 +1,44 @@
+<c-card>
+  <c-card-header>
+    <h2>Votantes Habilitados</h2>
+  </c-card-header>
+  <c-card-body>
+    <table cTable hover>
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre y Apellido</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Documento de Indentidad</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Nacionalidad</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Accion</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let voter of voters let i = index" >
+        <th scope="row">{{ i + 1}}</th>
+        <td>{{ voter.name }} {{voter.lastname}}</td>
+        <td>{{ voter.phone }}</td>
+        <td>{{ voter.identity_document}}</td>
+        <td>{{ voter.birth_date }}</td>
+        <td>{{ voter.nationality_id }}</td>
+        <td>{{ voter.user_id }}</td>
+        <td>{{ voter.is_active }}</td>
+        <td>
+          <button>Editar</button>
+          <button>Eliminar</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </c-card-body>
+  <c-card-footer>
+    <div class="flex justify-between">
+      <p>Mostrando 1 a 10 de 50 resultados</p>
+      <c-pagination></c-pagination>
+    </div>
+  </c-card-footer>
+</c-card>
