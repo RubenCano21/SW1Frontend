@@ -4,12 +4,13 @@ import {
   CardBodyComponent,
   CardComponent,
   CardFooterComponent,
-  CardHeaderComponent, PaginationComponent,
+  CardHeaderComponent, ModalToggleDirective, PaginationComponent,
   TableDirective
 } from "@coreui/angular";
 import {Voter} from "../../model/voter.model";
 import {VoterService} from "../../service/voter.service";
 import {NgForOf} from "@angular/common";
+import {VoterFormComponent} from "../voter-form/voter-form.component";
 
 @Component({
   selector: 'app-voter-list',
@@ -22,6 +23,8 @@ import {NgForOf} from "@angular/common";
     PaginationComponent,
     NgForOf,
     ButtonDirective,
+    VoterFormComponent,
+    ModalToggleDirective,
   ],
   templateUrl: './voter-list.component.html',
 })

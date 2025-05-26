@@ -1,0 +1,68 @@
+<c-modal #verticallyCenteredModal alignment="center" id="verticallyCenteredModal" size="lg">
+  <c-modal-header>
+    <h5 cModalTitle>Modal title</h5>
+    <button [cModalToggle]="verticallyCenteredModal.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <form cForm>
+      <c-row [gutter]="3" class="align-items-center">
+        <c-col xs="auto">
+          <label cLabel="col" for="inputPassword-3"> Nombre</label>
+          <input
+            aria-describedby="passwordHelpInline-3"
+            cFormControl
+            id="inputPassword-3"
+            type="password">
+        </c-col>
+        <c-col xs="auto">
+          <label cLabel="col" for="inputPassword-3"> Apellidos </label>
+          <input
+            aria-describedby="passwordHelpInline-3"
+            cFormControl
+            id="inputPassword-3"
+            type="password">
+        </c-col>
+        <c-col xs="auto">
+          <label cLabel="col" for="inputPassword-3"> Documento de Identidad</label>
+          <input
+            aria-describedby="passwordHelpInline-3"
+            cFormControl
+            id="inputPassword-3"
+            type="password">
+        </c-col>
+      </c-row>
+      <c-row [gutter]="3" class="align-items-center">
+        <c-col xs="auto">
+          <label cLabel="col" for="inputPassword-3"> Telefono </label>
+          <input
+            aria-describedby="passwordHelpInline-3"
+            cFormControl
+            id="inputPassword-3"
+            type="password">
+        </c-col>
+        <c-col xs="auto">
+          <label cLabel="col" for="inputPassword-3"> Edad </label>
+          <input
+            aria-describedby="passwordHelpInline-3"
+            cFormControl
+            id="inputPassword-3"
+            type="password">
+        </c-col>
+        <c-col xs="auto">
+          <label cLabel="col" for="inputPassword-3"> Nacionalidad </label>
+          <input
+            aria-describedby="passwordHelpInline-3"
+            cFormControl
+            id="inputPassword-3"
+            type="password">
+        </c-col>
+      </c-row>
+    </form>
+  </c-modal-body>
+  <c-modal-footer>
+    <button [cModalToggle]="verticallyCenteredModal.id" cButton color="secondary">
+      Close
+    </button>
+    <button cButton color="primary">Understood</button>
+  </c-modal-footer>
+</c-modal>
