@@ -25,7 +25,6 @@ import {VoterFormComponent} from "../voter-form/voter-form.component";
     ButtonDirective,
     VoterFormComponent,
     ModalToggleDirective,
-    NgIf,
   ],
   templateUrl: './voter-list.component.html',
 })
