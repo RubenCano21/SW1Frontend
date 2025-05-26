@@ -9,7 +9,7 @@ import {VoterListResponse} from "../model/voter.model";
 })
 export class VoterService {
 
-  private apiUrl = environment.apiUrl + '/voter';
+  private apiUrl = environment.apiUrl + '/api/voters';
 
   constructor(private http: HttpClient) { }
 

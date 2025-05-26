@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {
+  ButtonDirective,
   CardBodyComponent,
   CardComponent,
   CardFooterComponent,
@@ -9,6 +10,7 @@ import {
 import {Voter} from "../../model/voter.model";
 import {VoterService} from "../../service/voter.service";
 import {NgForOf} from "@angular/common";
+import {IconComponent, IconDirective} from "@coreui/icons-angular";
 
 @Component({
   selector: 'app-voter-list',
@@ -19,7 +21,10 @@ import {NgForOf} from "@angular/common";
     TableDirective,
     CardFooterComponent,
     PaginationComponent,
-    NgForOf
+    NgForOf,
+    ButtonDirective,
+    IconComponent,
+    IconDirective
   ],
   templateUrl: './voter-list.component.html',
 })
