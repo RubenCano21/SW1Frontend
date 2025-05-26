@@ -29,7 +29,7 @@
         <td>{{ voter.name }} {{voter.lastname}}</td>
         <td>{{ voter.phone }}</td>
         <td>{{ voter.identity_document}}</td>
-        <td>{{ voter.birth_date }}</td>
+        <td>{{ calculateAge(voter.birth_date) }}</td>
         <td>{{ voter.nationality_id }}</td>
         <td>{{ voter.user_id }}</td>
         <td>{{ voter.is_active }}</td>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from "../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {VoterListResponse} from "../model/voter.model";
+import {Voter, VoterListResponse} from "../model/voter.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,9 @@ export class VoterService {
 
   getAllVoters(): Observable<VoterListResponse> {
     return this.http.get<VoterListResponse>(this.apiUrl)
+  }
+
+  createVoter(voter: Voter): Observable<Voter> {
+    return this.http.post<Voter>(this.apiUrl, voter);
   }
 }

@@ -4,8 +4,8 @@ export interface Voter {
   lastname: string;
   phone: string;
   identity_document: string;
-  birth_date: Date;
-  nationality_id?: number;
+  birth_date?: string;
+  nationality_id: number;
   user_id?: number;
   is_active?: boolean;
 

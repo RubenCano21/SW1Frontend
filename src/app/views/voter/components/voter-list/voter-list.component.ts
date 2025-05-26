@@ -9,7 +9,7 @@ import {
 } from "@coreui/angular";
 import {Voter} from "../../model/voter.model";
 import {VoterService} from "../../service/voter.service";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {VoterFormComponent} from "../voter-form/voter-form.component";
 
 @Component({
@@ -25,6 +25,7 @@ import {VoterFormComponent} from "../voter-form/voter-form.component";
     ButtonDirective,
     VoterFormComponent,
     ModalToggleDirective,
+    NgIf,
   ],
   templateUrl: './voter-list.component.html',
 })
@@ -47,6 +48,21 @@ export class VoterListComponent  implements OnInit{
         console.error('Error fetching voters data:', error);
       },
     });
+  }
+
+  calculateAge(birthDateString: string | undefined): number | null {
+    if (!birthDateString) return null;
+    const today = new Date();
+    const birthDate = new Date(birthDateString);
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+
+    return age;
   }
 
 }
