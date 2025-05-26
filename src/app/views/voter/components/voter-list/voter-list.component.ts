@@ -10,7 +10,6 @@ import {
 import {Voter} from "../../model/voter.model";
 import {VoterService} from "../../service/voter.service";
 import {NgForOf} from "@angular/common";
-import {IconComponent, IconDirective} from "@coreui/icons-angular";
 
 @Component({
   selector: 'app-voter-list',
@@ -23,8 +22,6 @@ import {IconComponent, IconDirective} from "@coreui/icons-angular";
     PaginationComponent,
     NgForOf,
     ButtonDirective,
-    IconComponent,
-    IconDirective
   ],
   templateUrl: './voter-list.component.html',
 })
