@@ -20,4 +20,12 @@ export class VoterService {
   createVoter(voter: Voter): Observable<Voter> {
     return this.http.post<Voter>(this.apiUrl, voter);
   }
+
+  getVoterById(id: number): Observable<Voter> {
+    return this.http.get<Voter>(`${this.apiUrl}/${id}`);
+  }
+
+  updateVoter(id: number, voter: Voter) : Observable<Voter> {
+    return this.http.put<Voter>(`${this.apiUrl}/${id}`, voter);
+  }
 }

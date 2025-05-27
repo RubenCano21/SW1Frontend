@@ -1,4 +1,4 @@
-import {Component, OnInit, viewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   ButtonDirective,
   CardBodyComponent,
@@ -11,8 +11,8 @@ import {Voter} from "../../model/voter.model";
 import {VoterService} from "../../service/voter.service";
 import {NgForOf} from "@angular/common";
 import {VoterFormComponent} from "../voter-form/voter-form.component";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
+import {FormBuilder} from "@angular/forms";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-voter-list',
@@ -27,12 +27,11 @@ import {Router} from "@angular/router";
     ButtonDirective,
     VoterFormComponent,
     ModalToggleDirective,
+    RouterLink,
   ],
   templateUrl: './voter-list.component.html',
 })
 export class VoterListComponent  implements OnInit{
-
-
 
   voters: Voter[] = [];
 

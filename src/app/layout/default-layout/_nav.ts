@@ -43,11 +43,11 @@ export const navItems: INavData[] = [
         url: '/voter/list',
         icon: 'nav-icon-bullet'
       },
-      // {
-      //   name: 'Registrar Votante',
-      //   url: '/voter/create',
-      //   icon: 'nav-icon-bullet'
-      // }
+      {
+        name: 'Actualizar Datos',
+        url: '/voter/edit/:id',
+        icon: 'nav-icon-bullet'
+      }
     ]
   },
   {

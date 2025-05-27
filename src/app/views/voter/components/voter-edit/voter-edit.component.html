@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <h2>Editar Votante</h2>
+  <form [formGroup]="voterForm" (ngSubmit)="updateVoter()">
+    <div class="row">
+      <div class="col-md-6">
+        <label for="name">Nombre</label>
+        <input id="name" type="text" class="form-control" formControlName="name" />
+      </div>
+
+      <div class="col-md-6">
+        <label for="lastname">Apellidos</label>
+        <input id="lastname" type="text" class="form-control" formControlName="lastname" />
+      </div>
+
+      <div class="col-md-6">
+        <label for="identity_document">Documento</label>
+        <input id="identity_document" type="text" class="form-control" formControlName="identity_document" />
+      </div>
+
+      <div class="col-md-6">
+        <label for="phone">Teléfono</label>
+        <input id="phone" type="text" class="form-control" formControlName="phone" />
+      </div>
+
+      <div class="col-md-6">
+        <label for="birth_date">Fecha de nacimiento</label>
+        <input id="birth_date" type="date" class="form-control" formControlName="birth_date" />
+      </div>
+
+      <div class="col-md-6">
+        <label for="nationality_id">Nacionalidad (ID)</label>
+        <input id="nationality_id" type="number" class="form-control" formControlName="nationality_id" />
+      </div>
+    </div>
+
+    <button class="btn btn-primary mt-3" type="submit">Actualizar</button>
+  </form>
+</div>
+

@@ -9,5 +9,9 @@ export const routes : Routes = [
   {
     path: 'create',
     loadComponent: () => import('../voter/components/voter-form/voter-form.component').then((m) => m.VoterFormComponent),
+  },
+  {
+    path: 'edit/:id',
+    loadComponent: () => import('../voter/components/voter-edit/voter-edit.component').then((m) => m.VoterEditComponent),
   }
 ];

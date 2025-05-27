@@ -39,7 +39,11 @@
         <td>{{ voter.user_id }}</td>
         <td>{{ voter.is_active }}</td>
         <td>
-          <button cButton color="success" shape="rounded-pill" variant="ghost">
+          <button cButton color="success"
+                  shape="rounded-pill"
+                  variant="ghost"
+                  [routerLink]="['/voter/edit', voter.id]"
+          >
             Edit
           </button>
           <button cButton color="danger" shape="rounded-pill" variant="ghost">
