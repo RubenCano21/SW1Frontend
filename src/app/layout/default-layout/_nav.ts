@@ -36,7 +36,19 @@ export const navItems: INavData[] = [
   {
     name: 'Votantes',
     url: '/voter',
-    iconComponent: { name: 'cilUser' }
+    iconComponent: { name: 'cilUser' },
+    children: [
+      {
+        name: 'Lista de Votantes',
+        url: '/voter/list',
+        icon: 'nav-icon-bullet'
+      },
+      // {
+      //   name: 'Registrar Votante',
+      //   url: '/voter/create',
+      //   icon: 'nav-icon-bullet'
+      // }
+    ]
   },
   {
     name: 'Components',

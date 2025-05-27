@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, viewChild} from '@angular/core';
 import {
   ButtonDirective,
   CardBodyComponent,
@@ -9,8 +9,10 @@ import {
 } from "@coreui/angular";
 import {Voter} from "../../model/voter.model";
 import {VoterService} from "../../service/voter.service";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf} from "@angular/common";
 import {VoterFormComponent} from "../voter-form/voter-form.component";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-voter-list',
@@ -30,9 +32,13 @@ import {VoterFormComponent} from "../voter-form/voter-form.component";
 })
 export class VoterListComponent  implements OnInit{
 
+
+
   voters: Voter[] = [];
 
-  constructor(private voterService: VoterService) {  }
+  constructor(private voterService: VoterService,
+              private fb: FormBuilder,
+              protected router: Router) {  }
 
   ngOnInit(): void {
     this.listVoters();

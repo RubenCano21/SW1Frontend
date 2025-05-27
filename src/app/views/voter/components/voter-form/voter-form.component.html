@@ -4,7 +4,7 @@
 <!--    <button [cModalToggle]="verticallyCenteredModal.id" cButtonClose></button>-->
   </c-modal-header>
   <c-modal-body>
-    <form cForm [formGroup]="voterForm" (ngSubmit)="registerVoter()">
+    <form [formGroup]="voterForm" (ngSubmit)="registerVoter()">
       <c-row [gutter]="3" class="align-items-center">
         <c-col xs="12" sm="6">
           <label for="name">Nombre</label>
@@ -36,12 +36,18 @@
           <input id="nationality_id" formControlName="nationality_id" type="number" cFormControl />
         </c-col>
       </c-row>
+      <c-row [gutter]="3" class="align-items-center mt-3">
+        <c-col xs="12" sm="6">
+          <button cButton color="primary" type="submit">Registrar</button>
+        </c-col>
+        <c-col xs="12" sm="6">
+          <button [cModalToggle]="verticallyCenteredModal.id" cButton color="secondary">
+            Cancelar
+          </button>
+        </c-col>
+      </c-row>
     </form>
   </c-modal-body>
   <c-modal-footer>
-    <button [cModalToggle]="verticallyCenteredModal.id" cButton color="secondary">
-      Cancelar
-    </button>
-    <button cButton color="primary" type="submit">Registrar</button>
   </c-modal-footer>
 </c-modal>

@@ -1,9 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   ButtonDirective,
   ColComponent,
   FormControlDirective,
-  FormDirective,
   GutterDirective,
   ModalBodyComponent,
   ModalComponent,
@@ -27,7 +26,6 @@ import {Router} from "@angular/router";
     ModalBodyComponent,
     ModalFooterComponent,
     ButtonDirective,
-    FormDirective,
     RowComponent,
     GutterDirective,
     ColComponent,
@@ -36,14 +34,18 @@ import {Router} from "@angular/router";
   ],
   templateUrl: './voter-form.component.html',
 })
-export class VoterFormComponent{
+export class VoterFormComponent implements OnInit{
 
-  voterForm: FormGroup;
+  voterForm!: FormGroup
 
   constructor(private fb: FormBuilder,
               private voterService: VoterService,
               private router: Router) {
 
+
+
+  }
+  ngOnInit(): void {
     this.voterForm = this.fb.group({
       name: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -51,8 +53,7 @@ export class VoterFormComponent{
       identity_document: ['', Validators.required],
       birth_date: [''], // opcional
       nationality_id: [null, Validators.required],
-    })
-
+    });
   }
 
   registerVoter() {
@@ -77,9 +78,6 @@ export class VoterFormComponent{
       }
     })
   }
-
-
-
 
 
 }
