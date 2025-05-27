@@ -46,7 +46,11 @@
           >
             Edit
           </button>
-          <button cButton color="danger" shape="rounded-pill" variant="ghost">
+          <button cButton color="danger"
+                  shape="rounded-pill"
+                  variant="ghost"
+                  (click)="deleteVoter(voter.id)"
+          >
             Delete
           </button>
         </td>

@@ -69,4 +69,21 @@ export class VoterListComponent  implements OnInit{
     return age;
   }
 
+  deleteVoter(id: number) {
+    if (confirm('¿Estás seguro de eliminar este votante?')) {
+      this.voterService.deleteVoter(id).subscribe({
+        next: () => {
+          console.log('Voter deleted successfully');
+          this.voters = this.voters.filter(voter => voter.id !== id);
+          alert('Votante eliminado correctamente');
+          this.listVoters(); // Refresh the list after deletion
+        },
+        error: (error) => {
+          console.error('Error deleting voter:', error);
+          alert('Error al eliminar el votante');
+        }
+      })
+    }
+  }
+
 }

@@ -3,6 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Voter, VoterListResponse} from "../model/voter.model";
+import {VoterEditComponent} from "../components/voter-edit/voter-edit.component";
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class VoterService {
 
   updateVoter(id: number, voter: Voter) : Observable<Voter> {
     return this.http.put<Voter>(`${this.apiUrl}/${id}`, voter);
+  }
+
+  deleteVoter(id: number) : Observable<Voter> {
+    return this.http.delete<Voter>(`${this.apiUrl}/${id}`);
   }
 }
