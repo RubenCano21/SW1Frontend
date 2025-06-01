@@ -51,6 +51,27 @@ export const navItems: INavData[] = [
     ]
   },
   {
+    name: 'Paises',
+    title: true
+  },
+  {
+    name: 'Paises',
+    url: '/country',
+    iconComponent: { name: 'cilUser' },
+    children: [
+      {
+        name: 'Lista de Paises',
+        url: '/country/list',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Regiones',
+        url: '/country/regions',
+        icon: 'nav-icon-bullet'
+      }
+    ]
+  },
+  {
     name: 'Components',
     title: true
   },

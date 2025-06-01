@@ -1,1 +1,34 @@
-<p>country-list works!</p>
+<c-card>
+  <c-card-header class="d-flex justify-content-between align-items-center">
+    <h2>Paises</h2>
+<!--    <div class="d-grid gap-2 d-md-flex justify-content-md-end">-->
+<!--      <button>-->
+<!--        Agregar Votante-->
+<!--      </button>-->
+<!--    </div>-->
+  </c-card-header>
+  <c-card-body>
+    <table cTable hover>
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Codigo </th>
+        <th scope="col">Nombre </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let country of countries let i = index" >
+        <th scope="row">{{ i + 1}}</th>
+        <td>{{ country.code }}</td>
+        <td>{{ country.name }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </c-card-body>
+  <c-card-footer>
+    <div class="flex justify-between">
+      <p>Mostrando 1 a 10 de 50 resultados</p>
+      <c-pagination></c-pagination>
+    </div>
+  </c-card-footer>
+</c-card>

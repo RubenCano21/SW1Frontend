@@ -4,3 +4,10 @@ export interface Country {
   name: string;
   code: string;
 }
+
+export interface CountryListResponse {
+  countries: Country[];
+  total: number;
+  skip: number;
+  limit: number;
+}
