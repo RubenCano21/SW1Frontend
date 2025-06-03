@@ -2,7 +2,6 @@
   <c-card-header class="d-flex justify-content-between align-items-center">
     <h2>Votantes Habilitados</h2>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <app-voter-form></app-voter-form>
       <button
         [cModalToggle]="'verticallyCenteredModal'"
         cButton color="info"
@@ -20,36 +19,36 @@
         <th scope="col">#</th>
         <th scope="col">Nombre y Apellido</th>
         <th scope="col">Telefono</th>
-        <th scope="col">Documento de Indentidad</th>
         <th scope="col">Edad</th>
         <th scope="col">Nacionalidad</th>
+        <th scope="col">Recidencia</th>
         <th scope="col">Usuario</th>
         <th scope="col">Estado</th>
         <th scope="col">Accion</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let voter of voters let i = index" >
+      <tr *ngFor="let candidate of candidates let i = index" >
         <th scope="row">{{ i + 1}}</th>
-        <td>{{ voter.name }} {{voter.lastname}}</td>
-        <td>{{ voter.phone }}</td>
-        <td>{{ voter.identity_document}}</td>
-        <td>{{ voter.birth_date | edad }}</td>
-        <td>{{ voter.nationality_id }}</td>
-        <td>{{ voter.user_id }}</td>
-        <td>{{ voter.is_active }}</td>
+        <td>{{ candidate.name }} {{candidate.lastname}}</td>
+        <td>{{ candidate.phone }}</td>
+        <td>{{ candidate.birth_date | edad }}</td>
+        <td>{{ candidate.nationality_id }}</td>
+        <td>{{ candidate.recidence_id }}</td>
+        <td>{{ candidate.user_id }}</td>
+        <td>{{ candidate.status }}</td>
         <td>
           <button cButton color="success"
                   shape="rounded-pill"
                   variant="ghost"
-                  [routerLink]="['/voter/edit', voter.id]"
+                  [routerLink]="['/candidates/edit', candidate.id]"
           >
             Edit
           </button>
           <button cButton color="danger"
                   shape="rounded-pill"
                   variant="ghost"
-                  (click)="deleteVoter(voter.id)"
+                  (click)="deleteCandidate(candidate.id)"
           >
             Delete
           </button>

@@ -20,6 +20,11 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-drop' }
   },
   {
+    name: 'Candidatos',
+    url: '/candidates/list',
+    iconComponent: { name: 'cil-drop' }
+  },
+  {
     name: 'Typography',
     url: '/theme/typography',
     iconComponent: { name: 'cil-pencil' }
@@ -56,17 +61,17 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Paises',
-    url: '/country',
+    url: '/countries',
     iconComponent: { name: 'cilUser' },
     children: [
       {
         name: 'Lista de Paises',
-        url: '/country/list',
+        url: '/countries/list',
         icon: 'nav-icon-bullet'
       },
       {
         name: 'Regiones',
-        url: '/country/regions',
+        url: '/countries/regions',
         icon: 'nav-icon-bullet'
       }
     ]

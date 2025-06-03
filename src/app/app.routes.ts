@@ -29,8 +29,12 @@ export const routes: Routes = [
         loadChildren: () => import('./views/voter/routes').then((m) => m.routes)
       },
       {
-        path: 'country',
+        path: 'countries',
         loadChildren: () => import('./views/country/routes').then((m) => m.routes)
+      },
+      {
+        path: 'candidates',
+        loadChildren: () => import('./views/candidates/routes').then((m) => m.routes)
       },
       {
         path: 'base',
@@ -83,5 +87,5 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./views/pages/register/register.component').then(m => m.RegisterComponent),
   },
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: 'dashboard' }
 ];

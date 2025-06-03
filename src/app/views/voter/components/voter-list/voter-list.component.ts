@@ -13,6 +13,7 @@ import {NgForOf} from "@angular/common";
 import {VoterFormComponent} from "../voter-form/voter-form.component";
 import {FormBuilder} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
+import {EdadPipe} from "../../../../shared/edad.pipe";
 
 @Component({
   selector: 'app-voter-list',
@@ -28,6 +29,7 @@ import {Router, RouterLink} from "@angular/router";
     VoterFormComponent,
     ModalToggleDirective,
     RouterLink,
+    EdadPipe,
   ],
   templateUrl: './voter-list.component.html',
 })
@@ -37,9 +39,10 @@ export class VoterListComponent  implements OnInit{
 
   constructor(private voterService: VoterService,
               private fb: FormBuilder,
-              protected router: Router) {  }
+              protected router: Router,) {  }
 
   ngOnInit(): void {
+
     this.listVoters();
   }
 
@@ -54,20 +57,20 @@ export class VoterListComponent  implements OnInit{
     });
   }
 
-  calculateAge(birthDateString: string | undefined): number | null {
-    if (!birthDateString) return null;
-    const today = new Date();
-    const birthDate = new Date(birthDateString);
-
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-
-    return age;
-  }
+  // calculateAge(birthDateString: string | undefined): number | null {
+  //   if (!birthDateString) return null;
+  //   const today = new Date();
+  //   const birthDate = new Date(birthDateString);
+  //
+  //   let age = today.getFullYear() - birthDate.getFullYear();
+  //   const monthDiff = today.getMonth() - birthDate.getMonth();
+  //
+  //   if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+  //     age--;
+  //   }
+  //
+  //   return age;
+  // }
 
   deleteVoter(id: number) {
     if (confirm('¿Estás seguro de eliminar este votante?')) {
