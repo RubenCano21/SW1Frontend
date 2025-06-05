@@ -1,0 +1,40 @@
+<c-card>
+  <c-card-header>
+    <h3>Configuracion para los votantes</h3>
+  </c-card-header>
+  <c-card-body>
+    <form [formGroup]="formGroup">
+      <c-form-check sizing="xl" switch>
+        <input
+          cFormCheckInput
+          formControlName="checkInCtrl"
+          type="checkbox"
+        />
+        <label cFormCheckLabel>Switch Example</label>
+      </c-form-check>
+    </form>
+    <hr>
+    <c-form-check sizing="xl" switch>
+      <input
+        (change)="checkIn.set(!checkIn())"
+        [checked]="checkIn()"
+        cFormCheckInput
+        type="checkbox"
+      />
+      <label cFormCheckLabel>Switch Example</label>
+    </c-form-check>
+    <hr>
+    <form #templateForm="ngForm">
+      <c-form-check sizing="xl" switch>
+        <input
+          [(ngModel)]="checkIn"
+          cFormCheckInput
+          name="checkInTmpl"
+          type="checkbox"
+        />
+        <label cFormCheckLabel>Switch Example</label>
+      </c-form-check>
+    </form>
+    <hr>
+  </c-card-body>
+</c-card>

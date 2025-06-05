@@ -1,0 +1,33 @@
+<c-card>
+  <c-card-header>
+    <h3>Configuracion General</h3>
+  </c-card-header>
+  <c-card-body>
+    <form [gutter]="3" cForm cRow class="needs-validation" ngNativeValidate>
+      <c-col [md]="9">
+        <label cLabel for="validationServer01">Titulo</label>
+        <input [valid]="true"
+               cFormControl
+               id="validationServer01"
+               required
+               type="text"
+               placeholder="p. ej. Eleccion Precidencial 2024"
+        />
+        <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+      </c-col>
+      <c-col [md]="12">
+        <label cLabel for="validationServer02">Descripcion</label>
+        <textarea cFormControl
+        id="validationServer01"></textarea>
+        <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+      </c-col>
+      <hr>
+      <c-col [xs]="12">
+        <button cButton color="primary" type="submit">
+          Crear Eleccion
+        </button>
+      </c-col>
+    </form>
+  </c-card-body>
+</c-card>
+

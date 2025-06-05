@@ -35,6 +35,47 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cilUser' }
   },
   {
+    name: 'Elecciones',
+    title: true
+  },
+  {
+    name: 'ELECCIONES',
+    url: '/election',
+    iconComponent: { name: 'cilUser' },
+    children: [
+      {
+        name: 'Descripcion General',
+        url: '/election/list',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Resultados',
+        url: '/charts',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Crear Eleccion',
+        url: '/election/create',
+        icon: 'nav-icon-bullet'
+      },
+      // {
+      //   name: 'Votantes',
+      //   url: '',
+      //   icon: 'nav-icon-bullet'
+      // },
+      // {
+      //   name: 'Votacion',
+      //   url: '',
+      //   icon: 'nav-icon-bullet'
+      // },
+      {
+        name: 'Ajustes',
+        url: '/election/settings',
+        icon: 'nav-icon-bullet'
+      }
+    ]
+  },
+  {
     name: 'Votaciones',
     title: true
   },

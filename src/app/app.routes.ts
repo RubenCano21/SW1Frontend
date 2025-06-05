@@ -25,6 +25,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/user/routes').then((m) => m.routes)
       },
       {
+        path: 'election',
+        loadChildren: () => import('./views/election/routes').then((m) => m.routes)
+      },
+      {
         path: 'voter',
         loadChildren: () => import('./views/voter/routes').then((m) => m.routes)
       },
