@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <app-region-form (regionAdded)="onRegionAdded($event)">
+
+  </app-region-form>
+</div>
+<c-card>
+  <c-card-header class="d-flex justify-content-between align-items-center">
+    <h2>Paises</h2>
+    <!--    <div class="d-grid gap-2 d-md-flex justify-content-md-end">-->
+    <!--      <button>-->
+    <!--        Agregar Votante-->
+    <!--      </button>-->
+    <!--    </div>-->
+  </c-card-header>
+  <c-card-body>
+    <table cTable hover>
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Region </th>
+        <th scope="col">Pais</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let region of regions let i = index" >
+        <th scope="row">{{ i + 1}}</th>
+        <td>{{ region.name }}</td>
+        <td>{{ getCountryName( region.id_country) }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </c-card-body>
+  <c-card-footer>
+    <div class="flex justify-between">
+      <p>Mostrando 1 a 10 de 50 resultados</p>
+      <c-pagination></c-pagination>
+    </div>
+  </c-card-footer>
+</c-card>

@@ -1,0 +1,52 @@
+<c-card>
+  <c-card-header>
+    <h3>Crear una Eleccion</h3>
+  </c-card-header>
+  <c-card-body>
+    <form [gutter]="3" cForm cRow class="needs-validation" ngNativeValidate>
+
+      <c-col [md]="4">
+        <label cLabel for="validationServer02">Fecha de Inicio</label>
+        <input [valid]="true"
+               cFormControl
+               id="validationServer02"
+               required
+               type="date"
+        />
+        <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+      </c-col>
+      <c-col [md]="4">
+        <label cLabel for="validationServer02">Fecha de Finalizacion</label>
+        <input [valid]="true"
+               cFormControl
+               id="validationServer02"
+               required
+               type="date"
+        />
+        <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+      </c-col>
+      <c-col [md]="4">
+        <label cLabel for="validationServer02">Zona Horaria</label>
+        <input [valid]="true"
+               cFormControl
+               id="validationServer02"
+               required
+               type="datetime-local"
+        />
+        <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+      </c-col>
+      <c-col [md]="4">
+        <label cLabel for="validationServer03">Region</label>
+        <input [valid]="false" cFormControl id="validationServer03" required type="text" />
+        <c-form-feedback [valid]="false">Please provide a valid city.</c-form-feedback>
+      </c-col>
+      <hr>
+      <c-col [xs]="12">
+        <button cButton color="primary" type="submit">
+          Crear Eleccion
+        </button>
+      </c-col>
+    </form>
+  </c-card-body>
+</c-card>
+

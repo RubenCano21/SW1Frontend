@@ -20,6 +20,11 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-drop' }
   },
   {
+    name: 'Candidatos',
+    url: '/candidates/list',
+    iconComponent: { name: 'cil-drop' }
+  },
+  {
     name: 'Typography',
     url: '/theme/typography',
     iconComponent: { name: 'cil-pencil' }
@@ -28,6 +33,47 @@ export const navItems: INavData[] = [
     name: 'Usuarios',
     url: '/user/list-user',
     iconComponent: { name: 'cilUser' }
+  },
+  {
+    name: 'Elecciones',
+    title: true
+  },
+  {
+    name: 'ELECCIONES',
+    url: '/election',
+    iconComponent: { name: 'cilUser' },
+    children: [
+      {
+        name: 'Descripcion General',
+        url: '/election/list',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Resultados',
+        url: '/charts',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Crear Eleccion',
+        url: '/election/create',
+        icon: 'nav-icon-bullet'
+      },
+      // {
+      //   name: 'Votantes',
+      //   url: '',
+      //   icon: 'nav-icon-bullet'
+      // },
+      // {
+      //   name: 'Votacion',
+      //   url: '',
+      //   icon: 'nav-icon-bullet'
+      // },
+      {
+        name: 'Ajustes',
+        url: '/election/settings',
+        icon: 'nav-icon-bullet'
+      }
+    ]
   },
   {
     name: 'Votaciones',
@@ -46,6 +92,27 @@ export const navItems: INavData[] = [
       {
         name: 'Actualizar Datos',
         url: '/voter/edit/:id',
+        icon: 'nav-icon-bullet'
+      }
+    ]
+  },
+  {
+    name: 'Paises',
+    title: true
+  },
+  {
+    name: 'Paises',
+    url: '/countries',
+    iconComponent: { name: 'cilUser' },
+    children: [
+      {
+        name: 'Lista de Paises',
+        url: '/countries/list',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Regiones',
+        url: '/countries/regions',
         icon: 'nav-icon-bullet'
       }
     ]

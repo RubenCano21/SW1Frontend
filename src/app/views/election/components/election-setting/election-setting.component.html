@@ -1,0 +1,43 @@
+<div class="d-flex flex-column flex-md-row h-100">
+  <!-- Sub Sidebar -->
+  <div class="bg-light p-3 rounded-4" style="width: 200px;">
+    <ul class="nav flex-column mt-2 ">
+      <li class="nav-item mb-2">
+        <a routerLink="general" routerLinkActive="active-link" class="nav-link d-flex align-items-center gap-2 rounded-4">
+          <i class="bi bi-gear"></i>
+          General
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a routerLink="fechas" routerLinkActive="active-link" class="nav-link d-flex align-items-center gap-2 rounded-4">
+          <i class="bi bi-gear"></i>
+          Fechas
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a routerLink="votantes" routerLinkActive="active-link" class="nav-link d-flex align-items-center gap-2 rounded-4">
+          <i class="bi bi-gear"></i>
+          Votantes
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a routerLink="resultados" routerLinkActive="active-link" class="nav-link d-flex align-items-center gap-2 rounded-4">
+          <i class="bi bi-gear"></i>
+          Resultados
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a routerLink="eliminar" routerLinkActive="active-link" class="nav-link d-flex align-items-center gap-2 rounded-4">
+          <i class="bi bi-gear"></i>
+          Eliminar
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="flex-grow-1 p-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
