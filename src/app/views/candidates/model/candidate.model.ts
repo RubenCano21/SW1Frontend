@@ -1,3 +1,10 @@
+export enum CandidateStatus {
+  PENDING = 'PENDING',
+  ACCTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+  BLOCKED = 'BLOCKED',
+}
+
 export interface Candidate {
   id: number;
   name: string;
@@ -5,7 +12,7 @@ export interface Candidate {
   phone: string;
   birth_date: string;
   nationality_id: number;
-  recidence_id?: number;
+  residence_id: number;
   user_id?: number;
-  status: string;
+  status: CandidateStatus;
 }

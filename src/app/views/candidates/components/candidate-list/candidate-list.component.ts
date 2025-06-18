@@ -24,7 +24,6 @@ import {EdadPipe} from "../../../../shared/edad.pipe";
     NgForOf,
     PaginationComponent,
     TableDirective,
-    ModalToggleDirective,
     RouterLink,
     EdadPipe
   ],

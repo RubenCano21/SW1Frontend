@@ -17,4 +17,8 @@ export class CandidateService {
     return this.http.get<Candidate>(this._url);
   }
 
+  registerCandidate(candidate: Candidate): Observable<Candidate> {
+    return this.http.post<Candidate>(this._url, candidate);
+  }
+
 }
