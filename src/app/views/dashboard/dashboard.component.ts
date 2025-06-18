@@ -13,18 +13,16 @@ import {
   ColComponent,
   FormCheckLabelDirective,
   GutterDirective,
-  ProgressBarDirective,
   ProgressComponent,
   RowComponent,
   TableDirective,
-  TextColorDirective
 } from '@coreui/angular';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { IconDirective } from '@coreui/icons-angular';
 
-import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
-import { WidgetsDropdownComponent } from '../widgets/widgets-dropdown/widgets-dropdown.component';
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
+import {WidgetsDropdownComponent} from "../widgets/widgets-dropdown/widgets-dropdown.component";
+import {WidgetsBrandComponent} from "../widgets/widgets-brand/widgets-brand.component";
 
 interface IUser {
   name: string;
@@ -43,7 +41,9 @@ interface IUser {
 @Component({
     templateUrl: 'dashboard.component.html',
     styleUrls: ['dashboard.component.scss'],
-    imports: [WidgetsDropdownComponent,CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, ChartjsComponent, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent]
+  imports: [CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective,
+    IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective,
+    ChartjsComponent, NgStyle, CardFooterComponent, GutterDirective, ProgressComponent, CardHeaderComponent, TableDirective, AvatarComponent, WidgetsDropdownComponent, WidgetsBrandComponent]
 })
 export class DashboardComponent implements OnInit {
 
