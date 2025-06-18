@@ -23,7 +23,7 @@ export const routes : Routes = [
       .then((m) => m.ElectionSettingComponent),
     children: [
       { path: 'general', component: GeneralComponent},
-      {path: 'fechas', component: FechaComponent},
+      { path: 'fechas', component: FechaComponent},
       { path: 'votantes', component: VotantesComponent},
       { path: 'resultados', component: ResultadosComponent},
       { path: 'eliminar', component: EliminarComponent}

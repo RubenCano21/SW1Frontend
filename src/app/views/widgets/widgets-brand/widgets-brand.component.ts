@@ -1,7 +1,4 @@
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
-import { ChartjsComponent } from '@coreui/angular-chartjs';
-import { IconDirective } from '@coreui/icons-angular';
-import { ColComponent, RowComponent, WidgetStatDComponent } from '@coreui/angular';
 import { ChartData } from 'chart.js';
 
 type BrandData = {
@@ -18,7 +15,6 @@ type BrandData = {
     templateUrl: './widgets-brand.component.html',
     styleUrls: ['./widgets-brand.component.scss'],
     changeDetection: ChangeDetectionStrategy.Default,
-    imports: [RowComponent, ColComponent, WidgetStatDComponent, IconDirective, ChartjsComponent]
 })
 export class WidgetsBrandComponent implements AfterContentInit {
 
