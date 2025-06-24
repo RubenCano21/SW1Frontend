@@ -1,14 +1,14 @@
 <c-card>
   <c-card-header class="d-flex justify-content-between align-items-center">
-    <h2>Votantes Habilitados</h2>
+    <h2>Candidatos Habilitados</h2>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <button
-        [cModalToggle]="'verticallyCenteredModal'"
+        [routerLink]="['/candidates/register']"
         cButton color="info"
         shape="rounded-pill"
         variant="outline"
         class="mr-2">
-        Agregar Votante
+        Agregar Candidato
       </button>
     </div>
   </c-card-header>
@@ -22,8 +22,6 @@
         <th scope="col">Edad</th>
         <th scope="col">Nacionalidad</th>
         <th scope="col">Recidencia</th>
-        <th scope="col">Usuario</th>
-        <th scope="col">Estado</th>
         <th scope="col">Accion</th>
       </tr>
       </thead>
@@ -34,9 +32,7 @@
         <td>{{ candidate.phone }}</td>
         <td>{{ candidate.birth_date | edad }}</td>
         <td>{{ candidate.nationality_id }}</td>
-        <td>{{ candidate.recidence_id }}</td>
-        <td>{{ candidate.user_id }}</td>
-        <td>{{ candidate.status }}</td>
+        <td>{{ candidate.residence_id }}</td>
         <td>
           <button cButton color="success"
                   shape="rounded-pill"

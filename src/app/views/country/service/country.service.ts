@@ -36,8 +36,12 @@ export class CountryService {
 
   // Service methods for regions can be added here if needed
 
-  getAllRegions(): Observable<Region> {
-    return this.http.get<Region>(`${this.apiCountry}/regions`);
+  getAllRegions(): Observable<Region[]> {
+    return this.http.get<Region[]>(`${this.apiCountry}/regions`);
+  }
+
+  getAllRegionsByCountryId(country_id: number): Observable<Region[]> {
+    return this.http.get<Region[]>(`${this.apiCountry}/regions/${country_id}`);
   }
 
   registerRegion(region: Region): Observable<Region> {

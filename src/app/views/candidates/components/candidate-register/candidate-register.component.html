@@ -1,0 +1,122 @@
+<c-card>
+  <c-card-header>
+    <h2>Registrar Candidato</h2>
+  </c-card-header>
+
+  <c-card-body>
+    <form [formGroup]="candidateForm" (ngSubmit)="onSubmit()">
+      <c-row [gutter]="3" class="align-items-center">
+        <c-col xs="12" sm="3">
+          <label for="name">Nombre</label>
+          <input
+            id="name"
+            formControlName="name"
+            type="text"
+            cFormControl
+            [class.is-invalid]="candidateForm.get('name')?.invalid && candidateForm.get('name')?.touched"
+          />
+          <small *ngIf="candidateForm.get('name')?.errors?.['required'] && candidateForm.get('name')?.touched" class="text-danger">
+            El nombre es requerido.
+          </small>
+        </c-col>
+        <c-col xs="12" sm="3">
+          <label for="lastname">Apellidos</label>
+          <input
+            id="lastname"
+            formControlName="lastname"
+            type="text"
+            cFormControl
+            [class.is-invalid]="candidateForm.get('lastname')?.invalid && candidateForm.get('lastname')?.touched"
+          />
+          <small *ngIf="candidateForm.get('lastname')?.errors?.['required'] && candidateForm.get('lastname')?.touched" class="text-danger">
+            El Apellido es requerido.
+          </small>
+        </c-col>
+
+        <c-col xs="12" sm="3">
+          <label for="phone">Telefono</label>
+          <input
+            id="phone"
+            formControlName="phone"
+            type="text"
+            cFormControl
+            [class.is-invalid]="candidateForm.get('phone')?.invalid && candidateForm.get('phone')?.touched"
+          />
+          <small *ngIf="candidateForm.get('phone')?.errors?.['required'] && candidateForm.get('phone')?.touched" class="text-danger">
+            El telefono es requerido.
+          </small>
+        </c-col>
+        <c-col xs="12" sm="3">
+          <label for="birth_date">Fecha de Nacimiento</label>
+          <input
+            id="birth_date"
+            formControlName="birth_date"
+            type="date"
+            cFormControl
+            [class.is-invalid]="candidateForm.get('birth_date')?.invalid && candidateForm.get('birth_date')?.touched"
+          />
+          <small *ngIf="candidateForm.get('birth_date')?.errors?.['required'] && candidateForm.get('birth_date')?.touched" class="text-danger">
+            El campo es requerido.
+          </small>
+        </c-col>
+      </c-row>
+      <br>
+      <c-row [gutter]="3" class="align-items-center">
+
+        <c-col xs="12" sm="3">
+          <label for="nationality_id">Nacionalidad</label>
+          <select
+            id="nationality_id"
+            class="form-control"
+            formControlName="nationality_id"
+            [class.is-invalid]="candidateForm.get('nationality_id')?.invalid && candidateForm.get('nationality_id')?.touched"
+          >
+            <option value="" disabled> SELECCIONAR</option>
+            <option *ngFor="let nac of nationalities" [value]="nac.id">
+              {{ nac.name }}
+            </option>
+          </select>
+          <small *ngIf="candidateForm.get('nationality_id')?.errors?.['required'] && candidateForm.get('nationality_id')?.touched" class="text-danger">
+            El campo es requerido.
+          </small>
+        </c-col>
+
+        <c-col xs="12" sm="3">
+          <label for="residence_id">Residencia</label>
+          <select
+            id="residence_id"
+            formControlName="residence_id"
+            class="form-control"
+            [disabled]="!regions.length"
+            [class.is-invalid]="candidateForm.get('residence_id')?.invalid && candidateForm.get('residence_id')?.touched"
+          >
+            <option value="" disabled> SELECCIONAR</option>
+              <option *ngFor="let reg of regions" [value]="reg.id">
+              {{ reg.name }}
+            </option>
+          </select>
+          <small *ngIf="candidateForm.get('residence_id')?.errors?.['required'] && candidateForm.get('residence_id')?.touched" class="text-danger">
+            El campo es requerido.
+          </small>
+        </c-col>
+      </c-row>
+
+      <c-row [gutter]="3" class="align-items-center mt-3">
+        <c-col xs="6" sm="2">
+          <button
+            cButton color="primary"
+            type="submit"
+            [disabled]="candidateForm.invalid"
+            [routerLink]="['/candidates/list']"
+          >
+            Registrar
+          </button>
+        </c-col>
+        <c-col xs="6" sm="2">
+          <button cButton color="secondary" type="button" (click)="candidateForm.reset()">Cancelar</button>
+        </c-col>
+      </c-row>
+    </form>
+  </c-card-body>
+</c-card>
+
