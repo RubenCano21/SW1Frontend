@@ -9,12 +9,18 @@ import {Election} from "../model/election.model";
 })
 export class ElectionService {
 
-  private url = environment.apiUrl + 'api/election/';
+  private url = environment.apiUrl + '/api/elections';
 
   constructor(private http: HttpClient) { }
 
   getAllElections(): Observable<Election> {
-    return this.http.get<Election>(`${this.url}/list`);
+    //console.log(this.url)
+    return this.http.get<Election>(`${this.url}`);
+  }
+
+  getElectionById(id:number): Observable<Election> {
+    //console.log(this.url)
+    return this.http.get<Election>(`${this.url}/${id}`);
   }
 
 }

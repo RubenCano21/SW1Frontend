@@ -17,6 +17,7 @@ import {
 
 import { DefaultFooterComponent, DefaultHeaderComponent } from './';
 import { navItems } from './_nav';
+import { CommonModule } from '@angular/common';
 
 function isOverflown(element: HTMLElement) {
   return (
@@ -44,9 +45,16 @@ function isOverflown(element: HTMLElement) {
     NgScrollbar,
     RouterOutlet,
     RouterLink,
-    ShadowOnScrollDirective
+    ShadowOnScrollDirective,
+    CommonModule
   ]
 })
 export class DefaultLayoutComponent {
   public navItems = [...navItems];
+
+  isVoter(): boolean {
+    const voterId = parseInt(localStorage.getItem("voterId")!)
+    if (voterId > 0) return true
+    return false
+  }
 }

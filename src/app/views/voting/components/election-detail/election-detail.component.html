@@ -1,0 +1,193 @@
+<div class="container-fluid my-4">
+  <!-- Header de la Elección -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-gradient-primary text-white">
+      <div class="d-flex align-items-center">
+        <c-icon name="cilVote" class="me-2" size="lg"></c-icon>
+        <h4 class="card-title mb-0">{{ eleccion.title }}</h4>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-text text-muted fs-5 mb-4">{{ eleccion.description }}</p>
+
+      <!-- Información de la elección en badges y cards -->
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-3">
+          <div class="card border-0 bg-light h-100">
+            <div class="card-body text-center">
+              <c-icon name="cilSettings" class="text-primary mb-2" size="xl"></c-icon>
+              <h6 class="text-uppercase text-muted small mb-1">Modo</h6>
+              <span class="badge bg-primary-subtle text-primary fs-6">{{ eleccion.mode }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card border-0 bg-light h-100">
+            <div class="card-body text-center">
+              <c-icon name="cilCircle" class="text-success mb-2" size="xl"></c-icon>
+              <h6 class="text-uppercase text-muted small mb-1">Estado</h6>
+              <span class="badge"
+                    [ngClass]="{
+                      'bg-success': eleccion.status.toLowerCase() === 'inprogress',
+                      'bg-warning': eleccion.status.toLowerCase() === 'pending',
+                      'bg-secondary': eleccion.status.toLowerCase() === 'completed'
+                    }">
+                {{ eleccion.status }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card border-0 bg-light h-100">
+            <div class="card-body text-center">
+              <c-icon name="cilClock" class="text-info mb-2" size="xl"></c-icon>
+              <h6 class="text-uppercase text-muted small mb-1">Período</h6>
+              <small class="text-dark">
+                <strong>Inicio:</strong> {{ eleccion.start_datetime | date: 'short' }}<br>
+                <strong>Fin:</strong> {{ eleccion.end_datetime | date: 'short' }}
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card border-0 bg-light h-100">
+            <div class="card-body text-center">
+              <c-icon name="cilGlobe" class="text-warning mb-2" size="xl"></c-icon>
+              <h6 class="text-uppercase text-muted small mb-1">Configuración</h6>
+              <small class="text-dark">
+                <strong>Zona:</strong> {{ eleccion.timezone }}<br>
+                <strong>Anónimo:</strong>
+                <span class="badge" [ngClass]="eleccion.anonymous_voting ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger'">
+                  {{ eleccion.anonymous_voting ? 'Sí' : 'No' }}
+                </span>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Papeleta de Votación -->
+  <ng-container *ngIf="eleccion.status.toLowerCase() === 'inprogress'">
+    <div class="row">
+      <div class="col-12">
+        <div class="card shadow-sm mb-3">
+          <div class="card-header bg-gradient-success text-white">
+            <div class="d-flex align-items-center">
+              <c-icon name="cilBallot" class="me-2" size="lg"></c-icon>
+              <h5 class="mb-0">Papeleta de Votación</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngFor="let position of positions; let i = index" class="mb-4">
+      <div class="card shadow-sm border-0">
+        <div class="card-header bg-gradient-info text-white">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+              <c-icon name="cilUser" class="me-2"></c-icon>
+              <h5 class="mb-0">{{ position.name }}</h5>
+            </div>
+            <span class="badge bg-light text-dark">
+              Posición {{ i + 1 }}
+            </span>
+          </div>
+        </div>
+
+        <div class="card-body bg-light">
+          <div class="row g-3">
+            <div
+              class="col-md-6 col-xl-4 mb-3"
+              *ngFor="let candidate of (position.id !== undefined ? candidatesByPosition[position.id] : []) || []"
+            >
+              <div
+                class="card h-100 candidate-card position-relative"
+                [ngClass]="{
+                  'border-success border-3 shadow-lg': position.id !== undefined && selectedCandidates[position.id] === candidate.id,
+                  'border-light shadow-sm': position.id !== undefined && selectedCandidates[position.id] !== candidate.id
+                }"
+                (click)="position.id !== undefined && (selectedCandidates[position.id] = candidate.id)"
+                style="cursor: pointer; transition: all 0.3s ease;"
+              >
+                <!-- Indicador de selección -->
+                <div
+                  class="position-absolute top-0 end-0 p-2"
+                  *ngIf="position.id !== undefined && selectedCandidates[position.id] === candidate.id"
+                >
+                  <span class="badge bg-success rounded-pill">
+                    <c-icon name="cilCheckCircle"></c-icon>
+                  </span>
+                </div>
+
+                <div class="card-body text-center">
+                  <!-- Avatar placeholder -->
+                  <div class="mb-3">
+                    <div class="avatar avatar-lg bg-primary-subtle text-primary rounded-circle mx-auto d-flex align-items-center justify-content-center"
+                         style="width: 80px; height: 80px; font-size: 2rem;">
+                      <c-icon name="cilUser"></c-icon>
+                    </div>
+                  </div>
+
+                  <h5 class="card-title text-dark mb-2">
+                    {{ candidate.name }} {{ candidate.lastname }}
+                  </h5>
+
+                  <div class="d-flex align-items-center justify-content-center text-muted">
+                    <c-icon name="cilCalendar" class="me-2" size="sm"></c-icon>
+                    <small>{{ candidate.birth_date | date }}</small>
+                  </div>
+                </div>
+
+                <div class="card-footer text-center border-0"
+                     [ngClass]="{
+                       'bg-success text-white': position.id !== undefined && selectedCandidates[position.id] === candidate.id,
+                       'bg-light': position.id !== undefined && selectedCandidates[position.id] !== candidate.id
+                     }">
+                  <div class="form-check d-flex justify-content-center">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      [name]="'position_' + position.id"
+                      [checked]="position.id !== undefined && selectedCandidates[position.id] === candidate.id"
+                      readonly
+                    />
+                    <label class="form-check-label ms-2 fw-semibold">
+                      {{ position.id !== undefined && selectedCandidates[position.id] === candidate.id ? 'Seleccionado' : 'Seleccionar' }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón de guardar mejorado -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card border-0 bg-gradient-primary text-white shadow">
+          <div class="card-body text-center">
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+              <div class="text-white">
+                <c-icon name="cilInfo" class="me-2"></c-icon>
+                <span>Revisa tu selección antes de confirmar</span>
+              </div>
+              <button class="btn btn-success btn-lg px-4 py-2 shadow" (click)="guardarVoto()">
+                <c-icon name="cilCheckCircle" class="me-2"></c-icon>
+                Confirmar y Guardar Voto
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
