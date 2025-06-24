@@ -63,5 +63,9 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./views/pages/register/register.component').then(m => m.RegisterComponent),
   },
+  {
+    path: 'voting',
+    loadComponent: () => import('./views/voting/voting.component').then((m) => m.VotingComponent)
+  },
   { path: '**', redirectTo: 'dashboard' }
 ];

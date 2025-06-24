@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgStyle} from '@angular/common';
+import { CommonModule, NgStyle} from '@angular/common';
 import { IconDirective } from '@coreui/icons-angular';
 import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent,
   CardComponent, CardBodyComponent,  InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective } from '@coreui/angular';
@@ -12,17 +12,19 @@ import {HttpClientModule} from "@angular/common/http";
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-  imports: [ContainerComponent, RowComponent, ColComponent, CardGroupComponent, CardComponent, CardBodyComponent,
+  imports: [
+    CommonModule, ContainerComponent, RowComponent, ColComponent, CardGroupComponent, CardComponent, CardBodyComponent,
      InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective,
     ButtonDirective, NgStyle, RouterLink, ReactiveFormsModule, FormsModule, HttpClientModule],
   providers: [AuthService]
 })
 export class LoginComponent {
 
-
+  showLogin: boolean = false;
   username: string = '';
   password: string = '';
   error: string = '';
+  typeLogin: string = 'admin';
 
   constructor( private authService: AuthService,
                private router: Router) {
@@ -47,17 +49,31 @@ export class LoginComponent {
 
     const username = this.form.value.uname!;
     const password = this.form.value.password!;
+    const type = this.typeLogin;
 
-    this.authService.login(username, password).subscribe({
+    this.authService.login(username, password, type).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.access_token);
-        this.router.navigate(['/dashboard']);
+        if (this.typeLogin ==='admin')
+          this.router.navigate(['/dashboard']);
+        else
+          this.router.navigate(['/voting'])
       },
       error: (error) => {
         console.error('Login error', error);
         alert(error.error.detail || 'Error al iniciar sesión');
       }
     });
+  }
+  selectUserType(userType: string): void {
+    this.typeLogin = userType;
+    this.showLogin = true;
+  }
+
+  goBack(): void {
+    this.showLogin = false;
+    this.typeLogin = '';
+    this.form.reset(); // Limpia el formulario al volver
   }
 
 

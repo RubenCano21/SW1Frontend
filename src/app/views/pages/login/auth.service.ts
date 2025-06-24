@@ -13,14 +13,17 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string, type?: string): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json' // Asegura JSON
     });
+    let url: string = `${this.apiUrl}/login`;
+    if (type === 'admin') url = `${this.apiUrl}/login?type=admin`
+    if (type === 'voter') url = `${this.apiUrl}/login?type=voter`
 
     const body = JSON.stringify({ username, password });
 
-    return this.http.post(`${this.apiUrl}/login`, body, { headers }).pipe(
+    return this.http.post(url, body, { headers }).pipe(
       catchError((error) => {
         console.error('Error en el inicio de sesión', error);
         return throwError(() => error);
