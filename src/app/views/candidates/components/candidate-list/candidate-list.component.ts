@@ -42,8 +42,8 @@ export class CandidateListComponent implements OnInit{
 
   listCandidates(){
     this.candidateService.getAllCandidates().subscribe({
-      next: (data) => {
-        this.candidates = !Array.isArray(data) ? [data] : data;
+      next: (data: any) => {
+        this.candidates = data.candidates;
       },
       error: (error) => {
         console.error('Error fetching candidates data:', error);

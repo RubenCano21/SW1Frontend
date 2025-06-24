@@ -13,6 +13,4 @@ export interface Candidate {
   birth_date: string;
   nationality_id: number;
   residence_id: number;
-  user_id?: number;
-  status: CandidateStatus;
 }

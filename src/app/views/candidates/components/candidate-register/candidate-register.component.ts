@@ -56,8 +56,6 @@ export class CandidateRegisterComponent implements OnInit {
       birth_date: [''],
       nationality_id: [''],
       residence_id: [''],
-      user_id: [''],
-      status: ['', Validators.required]
     });
   }
 
@@ -72,8 +70,8 @@ export class CandidateRegisterComponent implements OnInit {
       return;
     }
 
-    const newCandidate: Candidate = this.candidateForm.value;
-
+    let newCandidate: Candidate = this.candidateForm.value;
+    newCandidate.nationality_id = newCandidate.residence_id;
     this.candidateService.registerCandidate(newCandidate).subscribe({
       next: (data) => {
         console.log('Candidate registered successfully:', data);

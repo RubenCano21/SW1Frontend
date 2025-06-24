@@ -91,44 +91,13 @@
             [class.is-invalid]="candidateForm.get('residence_id')?.invalid && candidateForm.get('residence_id')?.touched"
           >
             <option value="" disabled> SELECCIONAR</option>
-            <option *ngFor="let reg of regions" [value]="reg.id">
+              <option *ngFor="let reg of regions" [value]="reg.id">
               {{ reg.name }}
             </option>
           </select>
           <small *ngIf="candidateForm.get('residence_id')?.errors?.['required'] && candidateForm.get('residence_id')?.touched" class="text-danger">
             El campo es requerido.
           </small>
-        </c-col>
-        <c-col xs="12" sm="3">
-          <label for="user_id">Usuario</label>
-          <input
-            id="user_id"
-            formControlName="user_id"
-            type="number"
-            cFormControl
-            [class.is-invalid]="candidateForm.get('user_id')?.invalid && candidateForm.get('user_id')?.touched"
-          />
-          <small *ngIf="candidateForm.get('user_id')?.errors?.['required'] && candidateForm.get('user_id')?.touched" class="text-danger">
-            El campo es requerido.
-          </small>
-        </c-col>
-        <c-col xs="12" sm="3  ">
-          <label for="status">Estado</label>
-          <select
-            id="status"
-            formControlName="status"
-            class="form-control"
-            [class.is-invalid]="candidateForm.get('status')?.invalid && candidateForm.get('status')?.touched"
-          >
-            <option value="" disabled> Selecciona un Estado</option>
-            <option *ngFor="let status of candidateStatusOptions" [value]="status">
-              {{ status }}
-            </option>
-          </select>
-          <small *ngIf="candidateForm.get('status')?.errors?.['required'] && candidateForm.get('status')?.touched" class="text-danger">
-            El campo es requerido.
-          </small>
-
         </c-col>
       </c-row>
 
