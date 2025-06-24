@@ -14,8 +14,8 @@ export class VoterService {
 
   constructor(private http: HttpClient) { }
 
-  getAllVoters(): Observable<VoterListResponse> {
-    return this.http.get<VoterListResponse>(this.apiUrl)
+  getAllVoters(): Observable<Voter[]> {
+    return this.http.get<Voter[]>(this.apiUrl)
   }
 
   createVoter(voter: Voter): Observable<Voter> {

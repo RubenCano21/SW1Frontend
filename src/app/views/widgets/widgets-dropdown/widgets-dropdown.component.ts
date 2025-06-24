@@ -9,22 +9,33 @@ import {
 } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
-import { RouterLink } from '@angular/router';
-import { IconDirective } from '@coreui/icons-angular';
-import { RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, ThemeDirective, DropdownComponent, ButtonDirective, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, DropdownDividerDirective } from '@coreui/angular';
+import { RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective,
+  DropdownComponent, ButtonDirective, DropdownToggleDirective,
+  } from '@coreui/angular';
+import {cilArrowRight, cilChartPie} from "@coreui/icons";
+import {ElectionService} from "../../election/service/election.service";
+import {VoterService} from "../../voter/service/voter.service";
 
 @Component({
     selector: 'app-widgets-dropdown',
     templateUrl: './widgets-dropdown.component.html',
-    styleUrls: ['./widgets-dropdown.component.scss'],
     changeDetection: ChangeDetectionStrategy.Default,
-    imports: [RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, IconDirective, ThemeDirective, DropdownComponent, ButtonDirective, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink, DropdownDividerDirective, ChartjsComponent]
+    imports: [RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, DropdownComponent,
+      ButtonDirective, DropdownToggleDirective, ChartjsComponent]
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
 
+  icons = { cilChartPie, cilArrowRight };
+
   constructor(
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private electionService: ElectionService,
+    private voterService: VoterService
   ) {}
+
+
+  electionsCount: number = 0;
+  votersCount: number = 0;
 
   data: any[] = [];
   options: any[] = [];
@@ -124,6 +135,24 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
 
   ngOnInit(): void {
     this.setData();
+
+    this.voterService.getAllVoters().subscribe({
+      next: (voters) => {
+        this.votersCount = voters.length;
+      }
+    });
+
+
+    this.electionService.getAllElections().subscribe({
+      next: (elections) => {
+        this.electionsCount = elections.length;
+        this.changeDetectorRef.detectChanges();
+      },
+      error: (error) => {
+        console.error('Error fetching elections', error);
+      }
+    })
+
   }
 
   ngAfterContentInit(): void {

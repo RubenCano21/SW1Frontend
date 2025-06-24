@@ -60,6 +60,10 @@ export class AuthService {
     );
   }
 
+  fetchProfile(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/profile`);
+  }
+
 
   saveToken(token: string): void {
     localStorage.setItem('token', token);
@@ -67,5 +71,14 @@ export class AuthService {
 
   getToken(): string | null {
     return localStorage.getItem('token');
+  }
+
+  clearToken(): void {
+    localStorage.removeItem('token');
+  }
+
+  getUserId(): number | null {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user).id : null;
   }
 }

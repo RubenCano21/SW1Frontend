@@ -3,81 +3,189 @@
     <h3>Crear una Eleccion</h3>
   </c-card-header>
   <c-card-body>
-      <form [gutter]="3" cForm cRow class="needs-validation" ngNativeValidate>
-        <c-col [md]="9">
-          <label cLabel for="validationServer01">Titulo</label>
-          <input [valid]="true"
-                 cFormControl
-                 id="validationServer01"
-                 required
-                 type="text"
-                 placeholder="p. ej. Eleccion Precidencial 2024"
+    <form [formGroup]="electionForm" (ngSubmit)="onSubmit()">
+      <c-row [gutter]="3" class="align-items-center">
+        <c-col xs="12" sm="6">
+          <label for="title">Titulo</label>
+          <input
+            id="title"
+            formControlName="title"
+            type="text"
+            cFormControl
+            [class.is-invalid]="electionForm.get('title')?.invalid && electionForm.get('title')?.touched"
           />
-          <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+          <small *ngIf="electionForm.get('title')?.errors?.['required'] && electionForm.get('title')?.touched" class="text-danger">
+            El campo es requerido.
+          </small>
         </c-col>
-        <c-col [md]="4">
-          <label cLabel for="validationServer02">Fecha de Inicio</label>
-          <input [valid]="true"
-                 cFormControl
-                 id="validationServer02"
-                 required
-                 type="date"
+
+        <c-col xs="12" sm="6">
+          <label for="description">Descripcion</label>
+          <input
+            id="description"
+            formControlName="description"
+            type="text"
+            cFormControl
+            [class.is-invalid]="electionForm.get('description')?.invalid && electionForm.get('description')?.touched"
           />
-          <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+          <small *ngIf="electionForm.get('description')?.errors?.['required'] && electionForm.get('description')?.touched" class="text-danger">
+            El campo es requerido.
+          </small>
         </c-col>
-        <c-col [md]="4">
-          <label cLabel for="validationServer02">Fecha de Finalizacion</label>
-          <input [valid]="true"
-                 cFormControl
-                 id="validationServer02"
-                 required
-                 type="date"
+      </c-row>
+      <br>
+      <c-row [gutter]="3" class="align-items-center">
+        <c-col xs="12" sm="3">
+          <label for="start_datetime">Fecha de Inicio</label>
+          <input
+            id="start_datetime"
+            formControlName="start_datetime"
+            type="datetime-local"
+            cFormControl
+            [class.is-invalid]="electionForm.get('start_datetime')?.invalid && electionForm.get('start_datetime')?.touched"
           />
-          <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+          <small *ngIf="electionForm.get('start_datetime')?.errors?.['required'] && electionForm.get('start_datetime')?.touched" class="text-danger">
+            El campo es requerido.
+          </small>
         </c-col>
-        <c-col [md]="4">
-          <label cLabel for="validationServer02">Zona Horaria</label>
-          <input [valid]="true"
-                 cFormControl
-                 id="validationServer02"
-                 required
-                 type="datetime-local"
+
+        <c-col xs="12" sm="3">
+          <label for="end_datetime">Fecha de Finalizacion</label>
+          <input
+            id="end_datetime"
+            formControlName="end_datetime"
+            type="datetime-local"
+            cFormControl
+            [class.is-invalid]="electionForm.get('end_datetime')?.invalid && electionForm.get('end_datetime')?.touched"
           />
-          <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+          <small *ngIf="electionForm.get('end_datetime')?.errors?.['required'] && electionForm.get('end_datetime')?.touched" class="text-danger">
+            El campo es requerido.
+          </small>
         </c-col>
-        <c-col [md]="4">
-          <label cLabel for="validationServerUsername">Administrador</label>
-          <c-input-group class="has-validation">
-            <span cInputGroupText id="inputGroupPrepend03">&#64;</span>
-            <input [valid]="false"
-                   aria-describedby="inputGroupPrepend03"
-                   cFormControl
-                   id="validationServerUsername"
-                   required
-                   type="text"
+
+<!--        <c-col xs="12" sm="3">-->
+<!--          <label for="mode">Modo de Eleccion</label>-->
+<!--          <select-->
+<!--            id="mode"-->
+<!--            formControlName="mode"-->
+<!--            class="form-control"-->
+<!--            [class.is-invalid]="electionForm.get('mode')?.invalid && electionForm.get('mode')?.touched"-->
+<!--          >-->
+<!--            <option *ngFor="let mode of electionModes" [value]="mode"-->
+<!--            >-->
+<!--              {{ mode }}-->
+<!--            </option>-->
+<!--          </select>-->
+<!--          <small *ngIf="electionForm.get('mode')?.errors?.['required'] && electionForm.get('mode')?.touched" class="text-danger">-->
+<!--            El campo es requerido.-->
+<!--          </small>-->
+<!--        </c-col>-->
+<!--        <c-col xs="12" sm="3">-->
+<!--          <label for="max_votes_per_user">Maximo votos por usuario</label>-->
+<!--          <input-->
+<!--            id="max_votes_per_user"-->
+<!--            formControlName="max_votes_per_user"-->
+<!--            type="number"-->
+<!--            cFormControl-->
+<!--          />-->
+<!--        </c-col>-->
+      </c-row>
+      <br>
+      <c-row [gutter]="3" class="align-items-center">
+<!--        <c-col xs="12" sm="3">-->
+<!--          <label for="minimum_age">Edad Minima</label>-->
+<!--          <input-->
+<!--            id="minimum_age"-->
+<!--            formControlName="minimum_age"-->
+<!--            type="number"-->
+<!--            cFormControl-->
+<!--          />-->
+<!--        </c-col>-->
+<!--        <c-col xs="12" sm="3">-->
+<!--          <label for="maximum_age">Edad Maxima</label>-->
+<!--          <input-->
+<!--            id="maximum_age"-->
+<!--            formControlName="maximum_age"-->
+<!--            type="number"-->
+<!--            cFormControl-->
+<!--          />-->
+<!--        </c-col>-->
+        <c-col xs="12" sm="3">
+          <label>Zona horaria:</label>
+          <input
+            class="form-control"
+            formControlName="timezone" />
+        </c-col>
+<!--        <c-col xs="12" sm="3">-->
+<!--          <label for="status">Estado de Eleccion</label>-->
+<!--          <select-->
+<!--            id="status"-->
+<!--            formControlName="status"-->
+<!--            class="form-control"-->
+<!--          >-->
+<!--            <option *ngFor="let status of electionStatus" [value]="status">{{ status }}</option>-->
+<!--          </select>-->
+<!--        </c-col>-->
+      </c-row>
+      <br>
+      <c-row [gutter]="3" class="align-items-center">
+        <c-col xs="12" sm="3">
+          <c-form-check sizing="xl" switch>
+            <input
+              cFormCheckInput
+              formControlName="show_results_in_real_time"
+              type="checkbox"
             />
-            <c-form-feedback [valid]="false">Por favor ingrese su nombre.</c-form-feedback>
-          </c-input-group>
+            <label cFormCheckLabel>Resultados en tiempo real</label>
+          </c-form-check>
         </c-col>
-        <c-col [md]="4">
-          <label cLabel for="validationServer03">Region</label>
-          <input [valid]="false" cFormControl id="validationServer03" required type="text" />
-          <c-form-feedback [valid]="false">Please provide a valid city.</c-form-feedback>
+        <c-col xs="12" sm="3">
+          <c-form-check sizing="xl" switch>
+            <input
+              cFormCheckInput
+              formControlName="allow_multiple_votes"
+              type="checkbox"
+            />
+            <label cFormCheckLabel>Permitir varios votos</label>
+          </c-form-check>
         </c-col>
-        <c-col [md]="3">
-          <label cLabel for="validationServer04">Estado</label>
-          <select [valid]="false" cSelect id="validationServer04">
-            <option disabled>Choose...</option>
-            <option>Opcion 1</option>
-          </select>
-          <c-form-feedback [valid]="false">Seleccione un estado válido</c-form-feedback>
+        <c-col xs="12" sm="3">
+          <c-form-check sizing="xl" switch>
+            <input
+              cFormCheckInput
+              formControlName="anonymous_voting"
+              type="checkbox"
+            />
+            <label cFormCheckLabel>Votacion Anonima</label>
+          </c-form-check>
         </c-col>
-        <hr>
-        <c-col [xs]="12">
-          <button cButton color="primary" type="submit">
-            Crear Eleccion
+        <c-col xs="12" sm="3">
+          <c-form-check sizing="xl" switch>
+            <input
+              cFormCheckInput
+              formControlName="authenticated_voters_only"
+              type="checkbox"
+            />
+            <label cFormCheckLabel>Solo usuarios autenticados</label>
+          </c-form-check>
+        </c-col>
+      </c-row>
+
+      <c-row [gutter]="3" class="align-items-center mt-3">
+        <c-col xs="12" sm="6">
+          <button
+            cButton color="primary"
+            type="submit"
+            [disabled]="electionForm.invalid"
+            [routerLink]="['/my-elections']"
+          >
+            Registrar
           </button>
         </c-col>
-      </form>
+        <c-col xs="12" sm="6">
+          <button cButton color="secondary" type="button" (click)="electionForm.reset()">Cancelar</button>
+        </c-col>
+      </c-row>
+    </form>
   </c-card-body>
 </c-card>

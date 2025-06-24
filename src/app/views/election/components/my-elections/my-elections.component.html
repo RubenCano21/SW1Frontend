@@ -1,0 +1,67 @@
+<c-navbar cScheme="dark" expand="lg" class="bg-dark">
+  <c-container fluid>
+    <h3>Sistema de Votacion Electronica</h3>
+    <button [cNavbarToggler]="collapseRef1"></button>
+    <div #collapseRef1="cCollapse" navbar cCollapse>
+      <c-navbar-nav class="me-auto mb-2 mb-lg-0">
+        <c-nav-item>
+          <a cNavLink >Dashboard</a>
+        </c-nav-item>
+      </c-navbar-nav>
+      <form cForm class="d-flex" role="search">
+        <input cFormControl type="search" placeholder="Buscar..." aria-label="Search" class="me-2">
+        <button cButton color="success" variant="outline">Buscar</button>
+      </form>
+    </div>
+  </c-container>
+</c-navbar>
+
+<div class="container mt-4">
+  <c-card>
+    <c-card-header>
+     <div class="d-flex justify-content-between align-items-center">
+        <h4 class="card-title mb-0">Mis Elecciones</h4>
+        <button cButton color="primary" routerLink="/election/create" class="me-md-2">Nueva Elección</button>
+      </div>
+    </c-card-header>
+    <c-card-body>
+      <ng-container *ngIf="elections.length > 0; else noElections">
+        <c-row>
+          <c-col *ngFor="let election of elections" [lg]="12">
+            <c-card
+              [cBorder]="{top: {color: getColorByStatus(election.status!), width: 3}}"
+              class="mb-3"
+            >
+              <c-card-body>
+                <h5 cCardTitle>{{ election.title }}</h5>
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                  <c-badge [color]="getColorByStatus(election.status!)" shape="rounded-pill">
+                    {{ election.status }}
+                  </c-badge>
+                  <p><strong>Inicio:</strong> {{ election.start_datetime | date:'short' }}</p>
+                  <p><strong>Fin:</strong> {{ election.end_datetime | date:'short' }}</p>
+                  <button cButton [color]="getColorByStatus(election.status!)" variant="ghost" size="sm"
+                          [routerLink]="['/dashboard', election.id]">
+                    Ingresar
+                  </button>
+                </div>
+              </c-card-body>
+            </c-card>
+          </c-col>
+        </c-row>
+      </ng-container>
+      <ng-template #noElections>
+        <c-card>
+          <c-card-body>
+            Aún no tienes elecciones asignadas. Puedes crear una nueva elección haciendo click en el botón
+            <strong>"Nueva Elección"</strong>  en la parte superior derecha.
+          </c-card-body>
+        </c-card>
+      </ng-template>
+    </c-card-body>
+    <c-card-footer>
+
+    </c-card-footer>
+  </c-card>
+</div>
+

@@ -12,11 +12,11 @@ export const routes : Routes = [
     loadComponent: () => import('../election/components/election-list/election-list.component')
       .then((m) => m.ElectionListComponent),
   },
-  {
-    path: 'create',
-    loadComponent: () => import('../election/components/election-create/election-create.component')
-      .then((m) => m.ElectionCreateComponent),
-  },
+  // {
+  //   path: 'create',
+  //   loadComponent: () => import('../election/components/election-create/election-create.component')
+  //     .then((m) => m.ElectionCreateComponent),
+  // },
   {
     path: 'settings',
     loadComponent: () => import('../election/components/election-setting/election-setting.component')
@@ -28,5 +28,5 @@ export const routes : Routes = [
       { path: 'resultados', component: ResultadosComponent},
       { path: 'eliminar', component: EliminarComponent}
     ]
-  }
+  },
 ]

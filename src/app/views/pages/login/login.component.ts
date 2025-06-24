@@ -21,7 +21,7 @@ export class LoginComponent {
 
 
   username: string = '';
-  password: string = '';
+  //password: string = '';
   error: string = '';
 
   constructor( private authService: AuthService,
@@ -30,7 +30,7 @@ export class LoginComponent {
   }
 
   form = new FormGroup({
-    uname: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     password: new FormControl('', [Validators.required]),
   });
 
@@ -45,16 +45,26 @@ export class LoginComponent {
       return;
     }
 
-    const username = this.form.value.uname!;
+    const username = this.form.value.username!;
     const password = this.form.value.password!;
 
     this.authService.login(username, password).subscribe({
       next: (response) => {
-        localStorage.setItem('token', response.access_token);
-        this.router.navigate(['/dashboard']);
+        this.authService.saveToken(response.access_token || response.token);
+
+        this.authService.fetchProfile().subscribe({
+          next: (user) => {
+            localStorage.setItem('user', JSON.stringify(user));
+            this.router.navigate(['/my-elections']);
+          },
+          error: (err) => {
+            console.error('Error fetching user profile', err);
+            alert('Error al obtener el perfil de usuario');
+          }
+        })
       },
       error: (error) => {
-        console.error('Login error', error);
+        console.error(  'Login error', error);
         alert(error.error.detail || 'Error al iniciar sesión');
       }
     });
@@ -62,6 +72,6 @@ export class LoginComponent {
 
 
 
-  protected readonly FormGroup = FormGroup;
+
 
 }

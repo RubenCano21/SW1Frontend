@@ -5,25 +5,17 @@
       [title]="'Votantes'"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        26K
+        {{ votersCount }}
 
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
         <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0 text-white" color="transparent" aria-label="Open dropdown">
-            <svg cIcon name="cilOptions"></svg>
+          <button [caret]="false"
+                  cButton cDropdownToggle
+                  class="p-0 text-white" color="transparent"
+                  >
+            Ver
           </button>
-          <ul cDropdownMenu>
-            <li><a [routerLink]="[]" cDropdownItem>Ver</a></li>
-            <li><a [routerLink]="[]" cDropdownItem>Another action</a></li>
-            <li><a [routerLink]="[]" cDropdownItem>Something else here</a></li>
-            <li>
-              <hr cDropdownDivider>
-            </li>
-            <li>
-              <button cDropdownItem>Separated link</button>
-            </li>
-          </ul>
         </c-dropdown>
       </ng-template>
       <ng-template cTemplateId="widgetChartTemplate">
@@ -37,19 +29,16 @@
       color="info"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        <span>$6.200</span>
+        <span>{{ votersCount }}</span>
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
         <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0 text-white" color="transparent" aria-label="Open dropdown">
-            <svg cIcon name="cilOptions"></svg>
+          <button [caret]="false"
+                  cButton cDropdownToggle
+                  class="p-0 text-white" color="transparent"
+          >
+            Ver
           </button>
-          <ul cDropdownMenu>
-            <li><a [routerLink]="[]" cDropdownItem>Action</a></li>
-            <li><a [routerLink]="[]" cDropdownItem>Another action</a></li>
-            <li><a [routerLink]="[]" cDropdownItem>Something else here</a></li>
-            <li><a [disabled]="true" [routerLink]="[]" cDropdownItem>Disabled</a></li>
-          </ul>
         </c-dropdown>
       </ng-template>
       <ng-template cTemplateId="widgetChartTemplate">
@@ -67,15 +56,12 @@
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
         <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0 text-white" color="transparent" aria-label="Open dropdown">
-            <svg cIcon name="cilOptions"></svg>
+          <button [caret]="false"
+                  cButton cDropdownToggle
+                  class="p-0 text-white" color="transparent"
+          >
+            Ver
           </button>
-          <ul cDropdownMenu>
-            <li><a [routerLink]="[]" cDropdownItem>Action</a></li>
-            <li><a [routerLink]="[]" cDropdownItem>Another action</a></li>
-            <li><a [routerLink]="[]" cDropdownItem>Something else here</a></li>
-            <li><a [disabled]="true" [routerLink]="[]" cDropdownItem>Disabled</a></li>
-          </ul>
         </c-dropdown>
       </ng-template>
       <ng-template cTemplateId="widgetChartTemplate">
@@ -96,15 +82,12 @@
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
         <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0 text-white" color="transparent" aria-label="Open dropdown">
-            <svg cIcon name="cilOptions"></svg>
+          <button [caret]="false"
+                  cButton cDropdownToggle
+                  class="p-0 text-white" color="transparent"
+          >
+            Ver
           </button>
-          <ul cDropdownMenu>
-            <li><a [routerLink]="[]" cDropdownItem>Action</a></li>
-            <li><a [routerLink]="[]" cDropdownItem>Another action</a></li>
-            <li><a [routerLink]="[]" cDropdownItem>Something else here</a></li>
-            <li><a [disabled]="true" [routerLink]="[]" cDropdownItem>Disabled</a></li>
-          </ul>
         </c-dropdown>
       </ng-template>
       <ng-template cTemplateId="widgetChartTemplate">

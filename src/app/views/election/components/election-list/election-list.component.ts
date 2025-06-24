@@ -39,8 +39,8 @@ export class ElectionListComponent implements OnInit{
 
   listAllElections() {
     this.electionService.getAllElections().subscribe({
-      next: (data) => {
-        this.elections = Array .isArray(data) ? data : [data];
+      next: (data: any) => {
+        this.elections = data.elections;
       },
       error: (error) => {
         console.error('Error fetching elections:', error);

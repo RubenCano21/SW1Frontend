@@ -63,5 +63,15 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./views/pages/register/register.component').then(m => m.RegisterComponent),
   },
+  {
+    path: 'my-elections',
+    loadComponent: () => import('./views/election/components/my-elections/my-elections.component')
+      .then(m => m.MyElectionsComponent)
+  },
+  {
+    path: 'election/create',
+    loadComponent: () => import('./views/election/components/election-create/election-create.component')
+      .then((m) => m.ElectionCreateComponent),
+  },
   { path: '**', redirectTo: 'dashboard' }
 ];
