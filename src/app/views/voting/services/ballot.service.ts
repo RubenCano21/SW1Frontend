@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../../environments/environment';
 
 
 @Injectable({
@@ -24,7 +24,8 @@ export class BallotService {
   }
 
   getInscriptionByBallotCandidatePositionId(ballotId: number, positionId: number, candidateId: number) {
-    return this.http.get<any[]>(`${this.url}/org-pol`, {
+    console.log(ballotId, positionId, candidateId)
+    return this.http.get<any>(`${this.url}/org-pol`, {
       params: {
         ballot_id: ballotId,
         candidate_id: candidateId,
