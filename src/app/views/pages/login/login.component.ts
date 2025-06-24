@@ -54,6 +54,8 @@ export class LoginComponent {
     this.authService.login(username, password, type).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.access_token);
+        localStorage.setItem('userId', response.user_id);
+        localStorage.setItem('voterId', response.voter_id);
         if (this.typeLogin ==='admin')
           this.router.navigate(['/dashboard']);
         else

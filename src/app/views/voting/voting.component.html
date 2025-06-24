@@ -1,1 +1,191 @@
-<p>voting works!</p>
+<div class="container-fluid my-5">
+  <!-- Header con gradiente -->
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold text-primary mb-2">
+      <i class="cil-vote c-icon me-3"></i>Panel de Elecciones
+    </h1>
+    <p class="lead text-muted">Gestiona y participa en los procesos electorales</p>
+    <hr class="w-25 mx-auto border-primary border-3">
+  </div>
+
+  <!-- Info usuario mejorada -->
+  <div class="card shadow-lg border-0 mb-5">
+    <div class="card-header bg-gradient-primary text-white py-3">
+      <h5 class="mb-0">
+        <i class="cil-user c-icon me-2"></i>Información del Usuario
+      </h5>
+    </div>
+    <div class="card-body p-4">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <div class="d-flex align-items-center">
+            <div class="bg-primary rounded-circle p-3 me-4">
+              <i class="cil-user c-icon c-icon-xl text-white"></i>
+            </div>
+            <div>
+              <h4 class="fw-bold text-dark mb-2">{{ usuario.nombre }}</h4>
+              <div class="row g-3">
+                <div class="col-auto">
+                  <span class="badge bg-light text-dark p-2 rounded-pill">
+                    <i class="cil-envelope-closed c-icon me-1"></i>
+                    <strong>Correo:</strong> {{ usuario.correo }}
+                  </span>
+                </div>
+                <div class="col-auto">
+                  <span class="badge bg-light text-dark p-2 rounded-pill">
+                    <i class="cil-contact c-icon me-1"></i>
+                    <strong>DNI:</strong> {{ usuario.dni }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-end">
+          <button class="btn btn-outline-primary btn-lg">
+            <i class="cil-settings c-icon me-2"></i>Configuración
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estadísticas rápidas -->
+  <div class="row mb-5 g-4">
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body text-center p-4">
+          <div class="bg-success rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+            <i class="cil-task c-icon c-icon-lg text-white"></i>
+          </div>
+          <h3 class="text-success fw-bold">{{ elecciones.length }}</h3>
+          <p class="text-muted mb-0">Elecciones Disponibles</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body text-center p-4">
+          <div class="bg-warning rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+            <i class="cil-clock c-icon c-icon-lg text-white"></i>
+          </div>
+          <h3 class="text-warning fw-bold">2</h3>
+          <p class="text-muted mb-0">En Progreso</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body text-center p-4">
+          <div class="bg-info rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+            <i class="cil-check-circle c-icon c-icon-lg text-white"></i>
+          </div>
+          <h3 class="text-info fw-bold">5</h3>
+          <p class="text-muted mb-0">Completadas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de elecciones mejorada -->
+  <div class="row g-4">
+    <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let eleccion of elecciones; let i = index">
+      <div class="card h-100 border-0 shadow-lg position-relative overflow-hidden"
+           (click)="irADetalle(eleccion.id.toString())"
+           style="cursor: pointer; transition: all 0.3s ease;">
+
+        <!-- Badge de estado -->
+        <div class="position-absolute top-0 end-0 m-3">
+          <span class="badge bg-success rounded-pill px-3 py-2">
+            <i class="cil-circle-filled c-icon me-1" style="font-size: 8px;"></i>
+            Activa
+          </span>
+        </div>
+
+        <!-- Barra superior colorida -->
+        <div class="bg-gradient-primary" style="height: 5px;"></div>
+
+        <div class="card-body p-4">
+          <!-- Ícono de elección -->
+          <div class="mb-4">
+            <div class="bg-primary bg-opacity-10 rounded-3 p-3 d-inline-block">
+              <i class="cil-vote c-icon c-icon-xl text-primary"></i>
+            </div>
+          </div>
+
+          <h5 class="card-title fw-bold mb-3 text-dark">{{ eleccion.title }}</h5>
+          <p class="card-text text-muted mb-4" style="line-height: 1.6;">{{ eleccion.description }}</p>
+
+          <!-- Información de fechas mejorada -->
+          <div class="mb-4">
+            <div class="d-flex align-items-center mb-2">
+              <div class="bg-success bg-opacity-10 rounded-2 p-2 me-3">
+                <i class="cil-media-play c-icon text-success"></i>
+              </div>
+              <div>
+                <small class="text-muted d-block">Fecha de Inicio</small>
+                <strong class="text-dark">{{ eleccion.start_datetime }}</strong>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <div class="bg-danger bg-opacity-10 rounded-2 p-2 me-3">
+                <i class="cil-media-stop c-icon text-danger"></i>
+              </div>
+              <div>
+                <small class="text-muted d-block">Fecha de Fin</small>
+                <strong class="text-dark">{{ eleccion.end_datetime }}</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Barra de progreso -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <small class="text-muted">Progreso</small>
+              <small class="text-muted">65%</small>
+            </div>
+            <div class="progress" style="height: 8px;">
+              <div class="progress-bar bg-gradient-primary" style="width: 65%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer bg-transparent border-top-0 p-4 pt-0">
+          <div class="d-grid">
+            <button class="btn btn-primary btn-lg fw-semibold">
+              <i class="cil-arrow-right c-icon me-2"></i>
+              Ver Detalles
+            </button>
+          </div>
+
+          <!-- Información adicional -->
+          <div class="text-center mt-3">
+            <small class="text-muted">
+              <i class="cil-people c-icon me-1"></i>
+              1,247 participantes registrados
+            </small>
+          </div>
+        </div>
+
+        <!-- Efecto hover -->
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary bg-opacity-5 opacity-0"
+             style="transition: opacity 0.3s ease; pointer-events: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estado vacío mejorado -->
+  <div class="text-center py-5" *ngIf="elecciones.length === 0">
+    <div class="mb-4">
+      <i class="cil-vote c-icon text-muted" style="font-size: 5rem; opacity: 0.3;"></i>
+    </div>
+    <h3 class="text-muted mb-3">No hay elecciones disponibles</h3>
+    <p class="text-muted">Actualmente no tienes elecciones programadas o disponibles para participar.</p>
+    <button class="btn btn-primary btn-lg mt-3">
+      <i class="cil-plus c-icon me-2"></i>
+      Crear Nueva Elección
+    </button>
+  </div>
+</div>
+

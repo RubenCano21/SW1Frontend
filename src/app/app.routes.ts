@@ -17,6 +17,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
       },
       {
+        path: 'voting',
+        loadChildren: () => import('./views/voting/routes').then((m) => m.routes)
+      },
+      {
         path: 'user',
         loadChildren: () => import('./views/user/routes').then((m) => m.routes)
       },
@@ -64,7 +68,7 @@ export const routes: Routes = [
     loadComponent: () => import('./views/pages/register/register.component').then(m => m.RegisterComponent),
   },
   {
-    path: 'voting',
+    path: 'pvoting',
     loadComponent: () => import('./views/voting/voting.component').then((m) => m.VotingComponent)
   },
   { path: '**', redirectTo: 'dashboard' }
