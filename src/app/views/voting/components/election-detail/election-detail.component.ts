@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BallotService } from '../../services/ballot.service';
 import { PositionsV } from '../../models/positions'
-import { Eleccion } from '../../models/Election';
+import { Eleccion } from '../../models/election';
 import { Vote } from '../../models/vote'
 import { Inscription} from '../../models/inscription'
 import { CommonModule } from '@angular/common';
