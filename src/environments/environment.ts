@@ -2,5 +2,5 @@
 
 export const environment = {
   production : false,
-  apiUrl : 'http://localhost:8000'
+  apiUrl : 'https://better-cally-josecarlosgs-76a0340f.koyeb.app'
 }
