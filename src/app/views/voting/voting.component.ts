@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ElectionService } from '../election/service/election.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import {Eleccion} from './models/Election'
+import {Eleccion} from './models/election'
 
 interface Usuario {
   nombre: string;
